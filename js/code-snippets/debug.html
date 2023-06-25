@@ -1,0 +1,53 @@
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>MarkNote Code Snippets</title>
+  <link id="theme-link" rel="stylesheet" type="text/css" href="lib/highlight/styles/dark.min.css" media="all" />
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" type="text/css" href="font/stylesheet.css" media="all" />
+</head>
+<body>
+<div id="form">
+ <div id="status-bar">
+   <div id="status-dots"/>
+ </div>
+ <pre class="container" id="code" >
+  
+</pre>
+</div>
+
+  
+</body>
+<script src="lib/highlight/highlight.min.js"></script>
+<script>
+    const code = document.getElementById('code');
+    const form = document.getElementById('form');
+
+    const editor = {
+      updateCode: (value = '', lang ='js') => {
+        if (lang && lang.length > 0) {
+            const colorized = self.hljs.highlight(value, {language: lang});
+            code.innerHTML = colorized.value;
+        } else {
+            const colorized = self.hljs.highlightAuto(value);
+            code.innerHTML = colorized.value;
+        }
+      }
+    }
+    window.onload = () => {
+      
+
+      editor.updateCode(`
+class Simple {
+    public static void main(String args[]){
+     System.out.println("Hello world");
+    }
+   private void test() {
+      // some comments
+      System.out.println("Another test");
+   }
+}
+`,'xml');
+   }
+</script>
+</html>
